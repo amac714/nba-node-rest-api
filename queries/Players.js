@@ -2,14 +2,6 @@
 // utility class for queries needed for Players table
 class Players {
 
-  constructor(fname, lname, age, height, team_id) {
-    this.player_fname = fname;
-    this.player_lname = lname;
-    this.age = age;
-    this.height = height;
-    this.team_id = team_id;
-  }
-
   static getAddPlayerSQL() {
     return 'INSERT INTO players (player_fname, player_lname, age, height, team_id) VALUES (?,?,?,?,?)';
   }
