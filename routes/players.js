@@ -31,7 +31,7 @@ router.post('/add', (req, res) => {
     req.body.team_name,
   ];
 
-  db.query(player.getAddPlayerSQL(), inserts, (err, data) => {
+  db.query(Players.getAddPlayerSQL(), inserts, (err, data) => {
     if (err) {
       console.error(err);
       res.status(400).send(err);
@@ -43,7 +43,6 @@ router.post('/add', (req, res) => {
 
 // delete a player
 router.delete('/:id', (req, res) => {
-  const sql = 'DELETE FROM players WHERE id=?';
   const inserts = [req.params.id];
   db.query(Players.deletePlayer(), inserts, (err, data) => {
     if (err) {
@@ -56,7 +55,7 @@ router.delete('/:id', (req, res) => {
 });
 
 // get 1 player by id to update
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
   const inserts = [req.params.id];
   db.query(Players.getOnePlayer(), inserts, (err, data) => {
     if (err) {
@@ -64,6 +63,7 @@ router.get('/:id', (req, res) => {
       res.status(400).send(err);
     } else {
       res.status(200).json({ data });
+      next();
     }
   });
 });
