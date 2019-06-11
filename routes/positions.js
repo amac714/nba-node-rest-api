@@ -77,8 +77,7 @@ router.post('/delete/:id', (req, res) => {
        res.status(404);
        console.error(err);
      } else {
-       console.log(data);
-       res.status(200).json({data});
+       res.status(200).send('Position deleted');
      }   
   });
 });
