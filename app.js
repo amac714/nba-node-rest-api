@@ -7,8 +7,6 @@ const bodyParser = require('body-parser');
 const players = require('./routes/players.js');
 const teams = require('./routes/teams.js');
 const positions = require('./routes/positions.js');
-const conference = require('./routes/conference.js');
-const divisions = require('./routes/divisions');
 
 const app = express();
 
@@ -24,8 +22,6 @@ app.get('/', (req, res) => {
 app.use('/players', players);
 app.use('/teams', teams);
 app.use('/positions', positions);
-app.use('/conference', conference);
-app.use('/divisions', divisions);
 
 // Endpoint doesn't exist
 app.use((req, res, next) => {
